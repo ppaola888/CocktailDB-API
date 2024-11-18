@@ -1,0 +1,25 @@
+<section class="cocktail-details">
+    <h2 class="text-center">Dettagli del Cocktail</h2>
+    <% if (cocktail) { %>
+        <div class="card">
+            <img src="<%= cocktail.strDrinkThumb %>" class="card-img-top" alt="<%= cocktail.strDrink %>">
+            <div class="card-body">
+                <h4 class="card-title"><%= cocktail.strDrink %></h4>
+                <p class="card-text"><%= cocktail.strInstructionsIT %></p>
+                <p><strong>Alcolico:</strong> <%= cocktail.strAlcoholic %></p>
+                <p><strong>Tipo di drink:</strong> <%= cocktail.strCategory %></p>
+                
+                <h5>Ingredienti:</h5>
+                <ul>
+                    <% for (let i = 1; i <= 15; i++) { %>
+                        <% if (cocktail[`strIngredient${i}`]) { %>
+                            <li><%= cocktail[`strIngredient${i}`] %> - <%= cocktail[`strMeasure${i}`] || 'Quantità non disponibile' %></li>
+                        <% } %>
+                    <% } %>
+                </ul>
+            </div>
+        </div>
+    <% } else { %>
+        <p>Dettagli del cocktail non disponibili.</p>
+    <% } %>
+</section>

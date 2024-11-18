@@ -1,0 +1,32 @@
+<section class="cocktail-results">
+    <h1>Risultati della ricerca:</h1>
+
+    <% if (cocktails && cocktails.length > 0) { %>
+        <div class="cocktail-list">
+            <% cocktails.forEach(cocktail => { %>
+                <div class="cocktail-card">
+                    <img src="<%= cocktail.strDrinkThumb %>" alt="<%= cocktail.strDrink %>" />
+                    <h2><%= cocktail.strDrink %></h2>
+                    <p><%= cocktail.strInstructions %></p>
+                    <a href="/cocktails/id/<%= cocktail.idDrink %>" class="btn btn-primary">Vedi dettagli</a>
+                </div>
+            <% }) %>
+        </div>
+
+        <!-- Paginazione -->
+        <div class="pagination">
+            <% if (pagination.hasPreviousPage) { %>
+                <a href="/cocktails/search?page=<%= pagination.previousPage %>&filter=<%= params.filter %>&query=<%= params.query %>" class="prev-btn">Precedente</a>
+            <% } %>
+
+            <span>Pagina <%= pagination.currentPage %> di <%= pagination.lastPage %></span>
+
+            <% if (pagination.hasNextPage) { %>
+                <a href="/cocktails/search?page=<%= pagination.nextPage %>&filter=<%= params.filter %>&query=<%= params.query %>" class="next-btn">Successivo</a>
+                <% } %>
+        </div>
+
+    <% } else { %>
+        <p>Nessun risultato trovato.</p>
+    <% } %>
+</section>

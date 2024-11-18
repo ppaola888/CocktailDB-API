@@ -1,0 +1,53 @@
+<footer class="footer">
+    <div class="footer-links">
+        <ul>
+            <li><a href="/terms">Termini di utilizzo</a></li>
+            <li><a href="/about">Chi siamo</a></li>
+            <li><a href="/contact">Contatti</a></li>
+        </ul>
+    </div>
+    
+    <div class="social-media">
+        <a href="https://github.com/ppaola888" target="_blank">GitHub</a>
+        <a href="https://www.linkedin.com/in/paolaperuzzi84/" target="_blank">LinkedIn</a>
+
+    </div>
+    
+    <div class="copyright">
+        <p>&copy; 2024 MyWebsite. Tutti i diritti riservati.</p>
+    </div>
+    
+    <button id="backToTop" class="back-to-top">
+        <i class="bi bi-arrow-up"></i> 
+    </button>
+</footer>
+
+<script>
+   
+    const backToTop = document.getElementById('backToTop');
+
+    window.onscroll = function() {
+        const scrollPosition = document.documentElement.scrollTop || document.body.scrollTop;
+        const scrollHeight = document.documentElement.scrollHeight;
+        const clientHeight = document.documentElement.clientHeight;
+
+         // Show the button when we're close to the bottom (less than 100px from the bottom)
+        if (scrollHeight - scrollPosition - clientHeight < 100) {
+            backToTop.style.opacity = 1; 
+            backToTop.style.visibility = "visible"; 
+            backToTop.style.display = "block";
+        } else {
+            backToTop.style.opacity = 0; 
+            backToTop.style.visibility = "hidden"; 
+            backToTop.style.display = "none";
+        }
+    };
+
+
+    backToTop.addEventListener('click', function() {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+</script>

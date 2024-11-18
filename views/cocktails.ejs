@@ -1,0 +1,48 @@
+<section class="cocktails-list">
+    <h2>Cocktail Disponibili</h2>
+
+    <!-- Risultati della ricerca -->
+    <% if (searchQuery) { %>
+        <h2>Risultati per: <%= searchQuery %></h2>
+    <% } %>
+
+
+    <div class="cocktail-cards">
+        <% if (cocktails && cocktails.length > 0) { %>
+            <div class="row">
+                <% cocktails.forEach(cocktail => { %>
+                    <div class="col-md-4">
+                        <div class="card mb-4">
+                            <img src="<%= cocktail.strDrinkThumb %>" class="card-img-top" alt="<%= cocktail.strDrink %>">
+                            <div class="card-body">
+                                <h5 class="card-title"><%= cocktail.strDrink %></h5>
+                                <a href="/cocktails/id/<%= cocktail.idDrink %>" class="btn btn-primary"> Vedi Dettagli</a>
+                            </div>
+                        </div>
+                    </div>
+                <% }); %>
+            </div>
+        <% } else { %>
+            <p>Nessun cocktail trovato.</p>
+        <% } %>
+    </div>
+
+<!-- Paginazione -->
+<div class="pagination">
+    <% if (pagination && pagination.hasPreviousPage) { %>
+        <a href="?name=<%= searchQuery %>&page=<%= pagination.previousPage %>" class="btn btn-secondary">Indietro</a>
+    <% } %>
+    <% for (let i = 1; i <= pagination.lastPage; i++) { %>
+        <a href="?name=<%= searchQuery %>&page=<%= i %>" class="btn <%= i === pagination.currentPage ? 'btn-primary' : 'btn-outline-primary' %>">
+            <%= i %>
+        </a>
+    <% } %>
+    <% if (pagination && pagination.hasNextPage) { %>
+        <a href="?name=<%= searchQuery %>&page=<%= pagination.nextPage %>" class="btn btn-secondary">Avanti</a>
+    <% } %>
+</div>
+</section>
+
+
+
+        

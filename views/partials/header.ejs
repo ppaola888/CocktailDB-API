@@ -1,0 +1,58 @@
+<header class="header">
+    <nav class="navbar navbar-expand-lg sticky-top">
+        <a class="navbar-brand" href="/">Cocktail DB</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto">
+
+                <li class="nav-item">
+                    <a class="nav-link" href="/cocktails/ingredients">Ingredienti</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/cocktails/glasses">Bicchieri</a>
+                </li>
+
+                 <!-- Ricerca per nome, lettera, ingrediente, tipo -->
+                <li class="nav-item">
+                    <form action="/cocktails/search" method="get" class="form-inline">
+                        <div class="input-group">
+                        <select name="filter" id="filter" class="form-control mr-2">
+                            <option value="name">Nome</option>
+                            <option value="letter">Lettera</option>
+                            <option value="ingredient">Ingrediente</option>
+                            <option value="type">Tipo</option>
+                        </select>
+
+                        <!-- Input dinamico per il filtro selezionato -->
+                        <input type="text" name="query" id="query-input" class="form-control mr-2" placeholder="Cerca..." required>
+
+                        <select name="tyype-query" id="type-select" class="form-control mr-2" style="display: none;">
+                            <option value="Alcoholic">Alcoholic</option>
+                            <option value="Non_Alcoholic">Non Alcoholic</option>
+                        </select>
+
+                        <button type="submit" class="btn btn-outline-light">
+                            <i class="bi bi-search"></i>
+                        </button>
+                        </div>
+                    </form>
+                </li>
+                        
+            </ul>
+        </div>
+    </nav>
+</header>
+
+<script>
+    document.querySelector('.btn-outline-light').addEventListener('click', function(event) {
+        event.preventDefault(); 
+        let queryInput = document.querySelector('#query-input');
+        if (queryInput.value.trim() !== '') {
+            document.querySelector('form').submit(); 
+        } else {
+        alert("Please enter a search query");
+    }
+});
+</script>

@@ -1,0 +1,27 @@
+<section class="ingredients-section">
+    <h2>Seleziona un Ingrediente</h2>
+    <ul class="ingredients-list">
+        <% ingredients.forEach(ingredient => { %>
+            <li>
+                <a href="/cocktails/ingredients/<%= ingredient.strIngredient1 %>" class="btn btn-link">
+                    <%= ingredient.strIngredient1 %>
+                </a>
+            </li>
+        <% }) %>
+    </ul>
+
+    <!-- Paginazione -->
+<div class="pagination">
+    <% if (pagination && pagination.hasPreviousPage) { %>
+        <a href="?page=<%= pagination.previousPage %>" class="btn btn-secondary">Indietro</a>
+    <% } %>
+    <% for (let i = 1; i <= pagination.lastPage; i++) { %>
+        <a href="?page=<%= i %>" class="btn <%= i === pagination.currentPage ? 'btn-primary' : 'btn-outline-primary' %>">
+            <%= i %>
+        </a>
+    <% } %>
+    <% if (pagination && pagination.hasNextPage) { %>
+        <a href="?page=<%= pagination.nextPage %>" class="btn btn-secondary">Avanti</a>
+    <% } %>
+</div>
+</section>
